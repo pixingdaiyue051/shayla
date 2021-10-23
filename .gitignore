@@ -1,3 +1,14 @@
+###父项目站点###
+target/
+.classpath
+.project
+.settings
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.vscode/
 # Prerequisites
 *.d
 
@@ -11,6 +22,8 @@
 *.ilk
 *.map
 *.exp
+*.i
+*.s
 
 # Precompiled Headers
 *.gch
