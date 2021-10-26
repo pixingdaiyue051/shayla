@@ -1,5 +1,0 @@
-#编译ptr
-ptr.out:ptr.o a.c
-	gcc ptr.o a.c -o ptr.out
-ptr.o:ptr.c
-	gcc -c ptr.c -o ptr.o

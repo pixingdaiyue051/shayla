@@ -1,5 +1,0 @@
-#编译num
-num.out:num.o a.c
-	gcc num.o a.c -o num.out
-num.o:num.c
-	gcc -c num.c -o num.o

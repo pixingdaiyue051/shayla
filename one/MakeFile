@@ -1,0 +1,15 @@
+#编译num
+num.out:num.o num_main.c
+	gcc num.o num_main.c -o num.out
+num.o:num.c
+	gcc -c num.c -o num.o
+#编译ptr
+ptr.out:ptr.o ptr_main.c
+	gcc ptr.o ptr_main.c -o ptr.out
+ptr.o:ptr.c
+	gcc -c ptr.c -o ptr.o
+#编译linkedlist
+linkedlist.out:linkedlist.o linkedlist_main.c
+	gcc linkedlist.o linkedlist_main.c -o linkedlist.out
+linkedlist.o:linkedlist.c
+	gcc -c linkedlist.c -o linkedlist.o
