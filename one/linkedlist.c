@@ -20,13 +20,13 @@ linkedlist_t *ll_create(int content)
 linkedlist_t *ll_append(int content)
 {
     // 如果没有头节点则创建头节点
-    if (NULL == ll_head)
+    if (!ll_head)
     {
         ll_head = ll_create(content);
         return ll_head;
     }
     // 如果没有尾节点则创建尾节点
-    if (NULL == ll_tail)
+    if (!ll_tail)
     {
         ll_tail = ll_create(content);
         ll_head->next = ll_tail;
@@ -48,7 +48,7 @@ linkedlist_t *ll_append(int content)
 linkedlist_t *ll_insert(int content)
 {
     // 如果没有头节点则创建头节点
-    if (NULL == ll_head)
+    if (!ll_head)
     {
         ll_head = ll_create(content);
         return ll_head;
@@ -58,7 +58,7 @@ linkedlist_t *ll_insert(int content)
     ll_head->pre = e;
     e->next = ll_head;
     // 如果没有尾节点则将原头节点设为尾节点
-    if (NULL == ll_tail)
+    if (!ll_tail)
     {
         ll_tail = ll_head;
     }
@@ -68,14 +68,26 @@ linkedlist_t *ll_insert(int content)
 }
 
 /**
+ * 清空链表
+ * */
+void ll_free(linkedlist_t *e)
+{
+    if (e->next)
+    {
+        ll_free(e->next);
+    }
+    free(e);
+}
+
+/**
  * 顺序输出全部节点
  * */
-void ll_print(linkedlist_t *l)
+void ll_print(linkedlist_t *e)
 {
-    printf("%d\n", l->content);
-    if (NULL != l->next)
+    printf("%d\n", e->content);
+    if (e->next)
     {
-        ll_print(l->next);
+        ll_print(e->next);
     }
 }
 
