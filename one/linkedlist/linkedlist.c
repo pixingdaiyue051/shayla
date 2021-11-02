@@ -7,7 +7,7 @@
  * */
 linkedlist_t *ll_create(int content)
 {
-    linkedlist_t *e = malloc(sizeof(linkedlist_t));
+    linkedlist_t *e = (linkedlist_t *)malloc(sizeof(linkedlist_t));
     e->content = content;
     e->pre = NULL;
     e->next = NULL;
@@ -72,7 +72,7 @@ linkedlist_t *ll_insert(int content)
  * */
 void ll_free(linkedlist_t *e)
 {
-    if (e->next)
+    if (e && e->next)
     {
         ll_free(e->next);
     }

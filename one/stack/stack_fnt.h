@@ -1,3 +1,5 @@
+#include "stack_def.h"
+
 /**
  * 创建节点
  * */

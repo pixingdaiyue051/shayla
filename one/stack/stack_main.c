@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack_def.h"
 #include "stack_fnt.h"
 #define FACTOR 0.051
 

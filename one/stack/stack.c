@@ -7,7 +7,7 @@
  * */
 stack_t *ss_create(double d)
 {
-    stack_t *e = malloc(sizeof(stack_t));
+    stack_t *e = (stack_t *)malloc(sizeof(stack_t));
     e->data = d;
     e->next = NULL;
     return e;
@@ -64,7 +64,7 @@ double ss_pop()
  * */
 void ss_free(stack_t *e)
 {
-    if (e->next)
+    if (e && e->next)
     {
         ss_free(e->next);
     }

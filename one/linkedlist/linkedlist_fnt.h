@@ -1,3 +1,5 @@
+#include "linkedlist_def.h"
+
 /**
  * 创建空节点
  * */
