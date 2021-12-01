@@ -9,12 +9,12 @@ void in_out(sq_t *quene)
     while (1)
     {
         tmp = scanf("%d", &n);
+        if (n == 0)
+        {
+            break;
+        }
         if (tmp == 1)
         {
-            if (n == 0)
-            {
-                break;
-            }
             if (sq_add(quene, n))
             {
                 printf("已入队\n");

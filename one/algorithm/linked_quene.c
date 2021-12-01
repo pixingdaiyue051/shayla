@@ -36,7 +36,7 @@ bool lq_is_empty(lq_t *quene)
     return quene->size == 0;
 }
 
-static qn_t *__lq_create(lq_dt data)
+static inline qn_t *__lq_create(lq_dt data)
 {
     qn_t *node = (qn_t *)malloc(sizeof(qn_t));
     node->data = data;
@@ -98,25 +98,7 @@ bool lq_poll(lq_t *quene, lq_dt *pm)
     return false;
 }
 
-/**
- * 先进先出输出所有数据,不出队
- * */
-void lq_print(lq_t *quene)
-{
-    if (lq_is_empty(quene))
-    {
-        return;
-    }
-    qn_t *node = quene->front;
-    do
-    {
-        printf("%d\t", node->data);
-        // 队尾节点的后继节点一定为空
-    } while ((node = node->next) != NULL);
-    printf("\n");
-}
-
-static void __lq_free(qn_t *node)
+static inline void __lq_free(qn_t *node)
 {
     if (node->next != NULL)
     {
@@ -136,3 +118,21 @@ void lq_free(lq_t *quene)
     }
     free(quene);
 }
+
+// /**
+//  * 先进先出输出所有数据,不出队
+//  * */
+// void lq_print(lq_t *quene)
+// {
+//     if (lq_is_empty(quene))
+//     {
+//         return;
+//     }
+//     qn_t *node = quene->front;
+//     do
+//     {
+//         printf("%d\t", node->data);
+//         // 队尾节点的后继节点一定为空
+//     } while ((node = node->next) != NULL);
+//     printf("\n");
+// }

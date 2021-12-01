@@ -38,7 +38,7 @@ bool sq_is_full(sq_t *quene)
     return (quene->front - quene->rear == 1) || (quene->front - quene->rear + quene->capacity == 1);
 }
 
-static int __step_next(int p, int capacity)
+static inline int __step_next(int p, int capacity)
 {
     // 步长自增,如果超过capacity就置0
     return (p + 1 == capacity) ? 0 : p + 1;

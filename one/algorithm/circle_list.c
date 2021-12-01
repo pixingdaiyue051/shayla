@@ -13,7 +13,7 @@ typedef struct CIRCLE_LIST
     struct CIRCLE_LIST *next;
 } cl_t;
 
-static cl_t *__cl_create(cl_dt data)
+static inline cl_t *__cl_create(cl_dt data)
 {
     cl_t *e = (cl_t *)malloc(sizeof(cl_t));
     e->data = data;
@@ -53,7 +53,7 @@ void cl_del(cl_t *pos)
     free(pos);
 }
 
-static void __cl_free(cl_t *pos, cl_t *pos1)
+static inline void __cl_free(cl_t *pos, cl_t *pos1)
 {
     if (pos != pos1)
     {

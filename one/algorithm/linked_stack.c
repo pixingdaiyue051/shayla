@@ -35,7 +35,7 @@ bool ls_is_empty(ls_t *stack)
     return stack->size == 0;
 }
 
-static sn_t *__ls_create(ls_dt data)
+static inline sn_t *__ls_create(ls_dt data)
 {
     sn_t *node = (sn_t *)malloc(sizeof(sn_t));
     node->data = data;
@@ -90,7 +90,7 @@ bool ls_pop(ls_t *stack, ls_dt *pm)
 /**
  * 清空节点
  * */
-static void __sn_free(sn_t *s)
+static inline void __sn_free(sn_t *s)
 {
     if (s->next != NULL)
     {
