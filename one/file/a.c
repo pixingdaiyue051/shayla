@@ -12,6 +12,7 @@
 #include <sys/types.h>
 // #include <sys/wait.h>
 #include <fcntl.h>
+#include <dirent.h>
 
 /**
  * 复制文件
@@ -81,10 +82,34 @@ int stat1(char const *fa)
     }
 }
 
+/**
+ * 读取文件夹
+ * */
+int dir1(const char *dd)
+{
+    DIR *d = opendir(dd);
+    struct dirent *sd;
+
+    while (1)
+    {
+        sd = readdir(d);
+        if (sd == NULL)
+        {
+            break;
+        }
+        printf("%ld,%s\n", sd->d_ino, sd->d_name);
+    }
+
+    closedir(d);
+    return 0;
+}
+
 int main(int argc, char const *argv[])
 {
     // mycopy(argv[1], argv[2]);
 
-    stat1(argv[1]);
+    // stat1(argv[1]);
+
+    dir1(argv[1]);
     return 0;
 }
