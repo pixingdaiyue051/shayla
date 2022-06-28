@@ -86,12 +86,13 @@
     | 数据类型| 字节| 取值范围|
     | :-: | :-: | :-:|
     | char| 1 ||
-    |short (int)| 2 | -2^15~2^15-1 |
-    |int|2(32bit)4(64bit) | -2^15~2^15-1 |
-    |long (int)| 4 | -2^31~2^31-1 |
-    |unsigned int| 2 | 0~2^16-1 |
+    |short (int)| 2 | -2^8~2^8-1 |
+    |long (int)| 4 | -2^16~2^16-1 |
     |unsigned short (int)| 2 | 0~2^16-1 |
     |unsigned long (int)| 4 | 0~2^32-1 |
+    |int|2(32bit) | -2^8~2^8-1 |
+    |int|4(64bit) | -2^16~2^16-1 |
+    |unsigned int| 2 | 0~2^16-1 |
     |float| 4 |  |
     |double| 8 |  |
     |long double| 16 |  |
@@ -192,3 +193,18 @@
     #define _HEAD_H
     #endif
     ```
+### JNI
+1. java源代码编译成class  
+    javac HelloJNI.java
+2. 运行class文件(可以跳过 此时运行也会报错)  
+    java HelloJNI
+3. 生成头文件  
+    javah HelloJNI
+4. 根据头文件编写c  
+    自动生成的头文件不可删除不可修改 根据头文件内的方法签名提供对应的实现
+5. 编译
+    ``` shell
+    gcc -m64 -Wl,--add-stdcall-alias -I"C:\Program Files\Java\jdk1.8.0_331\include" -I"C:\Program Files\Java\jdk1.8.0_331\include\win32" -shared -o HelloJNI.dll HelloJNI.c
+    ```
+6. 再次执行第二步  
+    如果上面的步骤都没错 到这里所有的文件都已生成 可以正常运行
