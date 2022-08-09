@@ -208,3 +208,51 @@
     ```
 6. 再次执行第二步  
     如果上面的步骤都没错 到这里所有的文件都已生成 可以正常运行
+### 文件读写
+1. 系统IO linux系统提供的文件读写接口
+2. 标准IO C语言提供的文件读写接口
+3. 打开文件mode
+    - r     只读    文件必须存在
+    - r+    读写    文件必须存在
+    - w     只写    文件不存在则创建    文件存在则清空
+    - w+    读写    文件不存在则创建    文件存在则清空
+    - a     只写    文件不存在则创建    文件存在则追加
+    - a+    读写    文件不存在则创建    文件存在则追加
+    - b     二进制
+4. 文件属性
+    - stat 使用文件路径
+    - fstat 使用文件描述符
+    - lstat 使用文件路径
+    ``` c
+        struct stat {
+            _dev_t st_dev; // 普通文件所在存储器设备号
+            _ino_t st_ino; // 索引号 文件唯一序列号
+            unsigned short st_mode; // 权限 类型
+            short st_nlink; // 引用计数
+            short st_uid; // 文件所有者
+            short st_gid; // 文件所有者群组
+            _dev_t st_rdev; // 特殊文件设备号
+            _off_t st_size; // 文件大小
+            time_t st_atime; // 最新访问时间
+            time_t st_mtime; // 最近修改时间
+            time_t st_ctime; // 创建时间
+        };
+    ```
+5. 目录
+    - linux系统的目录和windows的文件夹不是同一个概念
+    - windows文件夹是文件的容器 像一颗倒置的树 子文件夹大小永远不可能超出父文件夹大小
+    - linux目录是一种文件索引表 组成该表的是目录项(由文件名和文件索引构成)
+    - opendir 使用文件路径读取目录
+    - readdir 读取目录项
+    ```c
+    struct dirent {
+        long		d_ino; // 指向文件索引号
+        unsigned short	d_reclen;
+        unsigned short	d_namlen;
+        char		d_name[260]; // 文件名
+    };
+    ```
+6. 输入子系统
+ - 读取接入到系统内的具有输入性质的设置
+ - 输入子事件都已经抽象到了 input_event 结构体内
+ 
