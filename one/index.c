@@ -10,6 +10,17 @@ int main(int argc, char const *argv[])
 		printf("%s\n", argv[i]);
 	}
 
+	if('3' == *argv[1])
+	{
+		printf("111\n");
+	}
+
+	char *msg = "1314";
+	if(*msg == *argv[2])
+	{
+		printf("222\n");
+	}
+
 	// scanf返回值代表匹配的数值个数0则表示没有匹配输入
 	// int n;
 	// int v = scanf("%d", &n);
