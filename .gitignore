@@ -9,6 +9,7 @@ target/
 *.ipr
 *.class
 out/
+.vs/
 .vscode/
 # Prerequisites
 *.d
@@ -64,3 +65,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+cmake-build-debug
+CMakeLists.txt
