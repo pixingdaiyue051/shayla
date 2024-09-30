@@ -61,14 +61,14 @@
         - 64位os 预留高12位 其他进程使用48位
         - 变量本质是内存
         - 指针本质是内存地址
-7.  |地址|说明|作用域|
-    |:-:|:-:|:-:|
-    |0xffffffffffffffff|64位最大地址|系统内存|
-    |0x7fffffffffffffff|48位最大地址|栈|
-    |0x7fffffffffffffff|48位最大地址|动态分配|
-    |0x7fffffffffffffff|48位最大地址|堆|
-    |0x7fffffffffffffff|程序中声明的变量|数据段|
-    |0x7fffffffffffffff|源代码编译后的二进制文件|代码块|
+    - |地址|说明|作用域|
+      |:-:|:-:|:-:|
+      |0xffffffffffffffff|64位最大地址|系统内存|
+      |0x7fffffffffffffff|48位最大地址|栈|
+      |0x7fffffffffffffff|48位最大地址|动态分配|
+      |0x7fffffffffffffff|48位最大地址|堆|
+      |0x7fffffffffffffff|程序中声明的变量|数据段|
+      |0x7fffffffffffffff|源代码编译后的二进制文件|代码块|
 ### c笔记
 1. 数据类型
     - 基本类型
@@ -83,23 +83,22 @@
     - 指针类型
     - 空类型
     - 布尔值 c没有提供bool类型 `0`即`false` 其他数字都为`true` 可以引入stdbool.h头文件载使用 不过没有必要
-2. 数据取值范围
-    | 数据类型| 字节| 取值范围|
-    | :-: | :-: | :-:|
-    |char| 1 ||
-    |short (int)| 2 | -2^8~2^8-1 |
-    |long (int)| 4 | -2^16~2^16-1 |
-    |unsigned short (int)| 2 | 0~2^16-1 |
-    |unsigned long (int)| 4 | 0~2^32-1 |
-    |int|2(32bit) | -2^8~2^8-1 |
-    |int|4(64bit) | -2^16~2^16-1 |
-    |unsigned int| 2 | 0~2^16-1 |
-    |float| 4 ||
-    |double| 8 ||
-    |long double| 16 ||
-    |pointer| 8 ||
-3. 运算符优先级
-    | 优先级 | 运算符 |
+2. |数据类型|字节|取值范围|
+   |:-:|:-:|:-:|
+   |char| 1 ||
+   |short (int)| 2 | -2^8~2^8-1 |
+   |long (int)| 4 | -2^16~2^16-1 |
+   |unsigned short (int)| 2 | 0~2^16-1 |
+   |unsigned long (int)| 4 | 0~2^32-1 |
+   |int|2(32bit) | -2^8~2^8-1 |
+   |int|4(64bit) | -2^16~2^16-1 |
+   |unsigned int| 2 | 0~2^16-1 |
+   |float| 4 ||
+   |double| 8 ||
+   |long double| 16 ||
+   |pointer| 8 ||
+
+3.  | 优先级 | 运算符 |
     | :-: | :-: |
     | 1 | () |
     | 2 | ! ++ -- |
