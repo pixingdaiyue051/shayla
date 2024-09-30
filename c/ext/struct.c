@@ -13,8 +13,8 @@ typedef struct {
     float weight;
 } Person;
 
-Person *person_crt(char *name, int age, float height, float weight) {
-    Person *who = malloc(sizeof(Person));
+Emp *person_crt(char *name, int age, float height, float weight) {
+    Emp *who = malloc(sizeof(Emp));
     assert(who != NULL);
 
     who->name = strdup(name);
@@ -25,7 +25,7 @@ Person *person_crt(char *name, int age, float height, float weight) {
     return who;
 }
 
-void person_free(Person *who) {
+void person_free(Emp *who) {
     if (who == NULL) {
         return;
     }
@@ -33,7 +33,7 @@ void person_free(Person *who) {
     free(who);
 }
 
-void person_show(Person *who) {
+void person_show(Emp *who) {
     if (who == NULL) {
         return;
     }
@@ -44,9 +44,9 @@ void person_show(Person *who) {
     printf("weight:%.2f\n", who->weight);
 }
 
-int main(int argc, const char *argv[]) {
+int main() {
     char *s = "khnnfs";
-    Person *p1 = person_crt(s, 5, 5.3f, 2.6f);
+    Emp *p1 = person_crt(s, 5, 5.3f, 2.6f);
     person_show(p1);
     person_free(p1);
     return 0;

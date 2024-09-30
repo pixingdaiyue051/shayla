@@ -181,7 +181,7 @@ void database_list(connection *conn)
     }
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     if (argc < 3)
     {

@@ -24,10 +24,10 @@
         将函数的声明写成头文件 可以分开编译不同c源文件
     - 编写MakeFile  
     ```MakeFile
-    num.out:num.o num_demo.c
-        gcc num.o num_demo.c -o num.out
-    num.o:num.c
-        gcc -c num.c -o num.o
+    number.out:number.o num_demo.c
+        gcc number.o num_demo.c -o number.out
+    number.o:number.c
+        gcc -c number.c -o number.o
     ```
 4. main函数
     ```c

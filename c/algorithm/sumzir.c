@@ -88,7 +88,7 @@ void caculator(const char *src)
 
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     // float f = q_rsqrt(9.6597);
     // printf("%.4f\n", f);

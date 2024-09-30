@@ -1,5 +1,5 @@
 /**
- * 字符串类 string
+ * 1、字符串类 string
  *      1、用于替代char char[]
  *      2、可以当成基本数据类型使用
  *      3、s.length() s.size() 获取字符串长度
@@ -10,23 +10,40 @@
  *      8、s.insert(2, "0000"); // 在第3个位置插入其他字符串
  *      9、s.replace(2, 3, "*******"); // 从第3个位置开始使用*******替换3个字符串
  *      10、s.compare("33*******04fe1"); // 比较两个字符串 如果相等就返回0
+ * 2、动态数组类 vector 在堆内使用
+ * 3、固定数组类 array 和传统数组一样都是在栈内使用
  */
 #include <iostream>
+#include <cstring>
+#include <vector>
+#include <array>
+#include <string>
 
 using namespace std;
 
-#include <vector>
+void char_fnt() {
+    const int MAX_IN = 16;
+    char ch[MAX_IN] = "324325";
+    wchar_t ch1[MAX_IN] = L"4425453";
+    char16_t ch2[MAX_IN] = u"543gd";
+    char32_t ch3[MAX_IN] = U"2rfas";
+    cout << strlen(ch) << endl;
+    wcout << ch1 << endl;
+    cout << ch << "," << ch2 << "," << ch3 << endl;
+    char rs[] = R"(sgP{}:":$(*(\\\cs|s \b \t c"a)";  // 字符串 ()内容原本输出不转义
+    cout << rs << endl;
+}
 
-/**
- * vector 代替数组
- */
 void vector_fnt() {
-    vector<int> vi;
+    vector<int> vi{1, 1, 1, 1};
     vi.reserve(10);
     for (int t = 0; t < 10; t++) {
-        vi.push_back(t);
+        vi.push_back(t * 32);
     }
     // 迭代循环
+    for (int i = 0; i < vi.size(); ++i) {
+        cout << vi[i] << endl;
+    }
     for (int i: vi) {
         cout << i << endl;
     }
@@ -35,8 +52,19 @@ void vector_fnt() {
     for (itr = vi.begin(); itr != vi.end(); itr++) {
         cout << *itr << endl;
     }
-    cout << vi.size() << endl << vi.max_size() << endl << vi.capacity() << endl;
+    cout << vi.size() << "," << vi.max_size() << "," << vi.capacity() << endl;
 }
+
+void array_fnt() {
+    array<int, 10> ai{1, 1, 1};
+    for (int i = 0; i < ai.size(); ++i) {
+        cout << ai[i] << endl;
+    }
+    for (int i: ai) {
+        cout << i << endl;
+    }
+}
+
 
 void str_fnt() {
     string s1 = "334ff";
@@ -62,7 +90,10 @@ void str_fnt() {
     cout << d2 << endl;
 }
 
-int main(int argc, const char *argv[]) {
-    str_fnt();
+int main() {
+//    char_fnt();
+//    vector_fnt();
+    array_fnt();
+//    str_fnt();
     return 0;
 }

@@ -148,7 +148,7 @@ _ht_error:
 	return 0.0f;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
 	double res = mmcompute("101*23.1-3.41*40+4*54.3/56*34/3*2-4*4-7+2+45-41-3-1-11-3*41+6/2*4-4-2");
 	printf("%.3lf\n", res);

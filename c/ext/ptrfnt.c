@@ -102,7 +102,7 @@ void fnt1(int *arg0, char *arg1, Data *data)
     printf("data %d %s\n", data->a1, data->s1);
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     // method_fntptr(cb);
     // method_fntptr(cberror0);

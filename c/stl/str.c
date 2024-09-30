@@ -32,7 +32,7 @@ void test1()
     printf("%s length is:%d\n", str, r5);
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     test0();
     test1();

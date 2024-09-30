@@ -118,7 +118,7 @@ void test0()
 	printf("非:%d,%hu\n", h4, h4);
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
 	// ext0();
 	ext1();

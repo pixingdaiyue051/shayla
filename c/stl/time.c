@@ -81,7 +81,7 @@ void rand_test()
     printf("%d,%d,%d,%d,%d\n", r1, r2, r3, r4, r5);
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     time_test();
     // rand_test();

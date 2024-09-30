@@ -11,7 +11,7 @@ typedef union {
     char *ch_val;
 } ID;
 
-int main(int argc, const char *argv[]) {
+int main() {
 
     ID *id = malloc(sizeof(ID));
 

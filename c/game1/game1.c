@@ -199,7 +199,7 @@ int process_input(Map *map)
     return 1;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     srand(time(NULL)); // 每次启动都按时间戳重新生成随机数种子保证不会重复
 

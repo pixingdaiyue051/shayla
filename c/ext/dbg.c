@@ -36,7 +36,7 @@ _ht_error:
     return -1;
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     test_log();
     test_err(argc);

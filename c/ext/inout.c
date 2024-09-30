@@ -74,7 +74,7 @@ void inope()
 //         fclose(f);
 }
 
-int main(int argc, const char *argv[])
+int main()
 {
     // inope1(argc, argv);
     // outope();
