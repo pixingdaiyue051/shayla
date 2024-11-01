@@ -8,44 +8,44 @@ Stock::Stock() {
     _total = 0.0;
 }
 
-Stock::Stock(const std::string &company, long share, double price) {
+Stock::Stock(long share, double price, const std::string &company) {
     _company = company;
     _share = share < 1 ? 0 : share;
     _price = price;
     _total = _price * _share;
 }
 
+Stock::~Stock() {
+    std::cout << "destructor called ~Stock" << std::endl;
+}
+
 void Stock::buy(long share, double price) {
-    using std::cout;
-    using std::endl;
     if (share < 1) {
-        cout << "cannot be negative" << endl;
+        std::cout << "cannot be negative" << std::endl;
         return;
     }
     _share += share;
     _price = price;
-    set_total();
+    setTotal();
 }
 
 void Stock::sell(long share, double price) {
-    using std::cout;
-    using std::endl;
     if (share < 1) {
-        cout << "cannot be negative" << endl;
+        std::cout << "cannot sell negative" << std::endl;
         return;
     }
     if (share > _share) {
-        cout << "cannot be more than _share:[" << _share << "]" << endl;
+        std::cout << "cannot sell more than [" << _share << "]" << std::endl;
         return;
     }
     _share -= share;
     _price = price;
-    set_total();
+    setTotal();
 }
 
 void Stock::update(double price) {
     _price = price;
-    set_total();
+    setTotal();
 }
 
 void Stock::show() {
@@ -54,7 +54,7 @@ void Stock::show() {
     using std::ios_base;
     using std::streamsize;
     ios_base::fmtflags fmt = cout.setf(ios_base::fixed, ios_base::floatfield);
-    streamsize prc =  cout.precision(3);
+    streamsize prc = cout.precision(3);
 
     cout << "company:[" << _company << "],"
          << "share:[" << _share << "],"
@@ -63,4 +63,8 @@ void Stock::show() {
 
     cout.setf(fmt);
     cout.precision(prc);
+}
+
+Stock::operator double() const {
+    return _total;
 }

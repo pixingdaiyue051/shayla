@@ -20,7 +20,8 @@
  *      使用name mangling(倾轧)修改函数名实现重载 void fnt(char c, int i) --> fnt_c_i()
  *      有默认参数的函数不能重载
  * 4、运算符重载
- *      operator实现运算符功能重载
+ *      operator实现运算符功能重载 只能实现cpp已支持的操作符
+ *      不能改变原操作符优先级和运算意义 不能创建新的运算符
  * 5、传参数方式
  *      传值  复制形参再赋值实参 数据之间不关联 适用本身数值不多内存占用不大的情况
  *      传指针 实际传递是变量的内存地址 数据互相关联 效率高但也有数据被篡改的危险 可使用const作用于形参保证数据不可变
@@ -53,7 +54,7 @@ struct Emp {
     float height;
 };
 
-Emp operator+(Emp p1, Emp p2) {
+Emp operator+(Emp &p1, Emp &p2) {
     return {.weight = p1.weight + p2.weight, .height = p1.height + p2.height};
 }
 
@@ -89,6 +90,7 @@ template<> void template_fnt<Emp>(Emp &p1, Emp &p2) {
     p1.weight = p2.weight;
     p2.weight = tmp;
 }
+
 
 int main() {
     inline_fnt();
