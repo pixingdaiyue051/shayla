@@ -23,7 +23,7 @@ void io_fnt() {
     cout << "0" << oct << a << endl; // 八进制输出
     cout << "0x" << hex << a << endl; // 十六进制输出
 
-    ios_base::fmtflags flg= cout.setf(ios_base::fixed, ios_base::floatfield);
+    ios_base::fmtflags flg = cout.setf(ios_base::fixed, ios_base::floatfield);
     streamsize prc = cout.precision(3);
 
     cout.setf(flg);
