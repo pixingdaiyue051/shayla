@@ -73,6 +73,18 @@ void stringFnt() {
     cout << tmp1 << tmp2 << endl;
 }
 
+void player() {
+    Player p1("bnjt54", "dtj54g");
+    Player p2("5gjyuhg", "fdfh", true);
+    RatePlayer rp1(40, "kkdf", "fdg5", true);
+    RatePlayer rp2(41, p2);
+    cout << p1.getName() << p2.getName() << endl;
+    cout << rp1.getRate() << rp2.getRate() << rp1.getName() << rp2.getName() << endl;
+    Player p3 = rp1;
+//    RatePlayer rp3 = p2; // 无法赋值
+    cout << p3.getName() << endl;
+}
+
 int main(const int argc, const char *argv[]) {
     cout << "hello world" << endl;
     cout << "argc:" << argc << ",argv:";
@@ -84,6 +96,7 @@ int main(const int argc, const char *argv[]) {
 //    time();
 //    coordinate();
 //    stringFnt();
+    player();
 
     return 0;
 }
