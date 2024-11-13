@@ -74,15 +74,28 @@ void stringFnt() {
 }
 
 void player() {
-    Player p1("bnjt54", "dtj54g");
-    Player p2("5gjyuhg", "fdfh", true);
-    RatePlayer rp1(40, "kkdf", "fdg5", true);
-    RatePlayer rp2(41, p2);
-    cout << p1.getName() << p2.getName() << endl;
-    cout << rp1.getRate() << rp2.getRate() << rp1.getName() << rp2.getName() << endl;
-    Player p3 = rp1;
-//    RatePlayer rp3 = p2; // 无法赋值
-    cout << p3.getName() << endl;
+//    Player p1("p1", "p1-back");
+//    RatePlayer rp1(40, p1);
+////    cout << p1.getName() << p1.getInfo() << endl;
+////    cout << rp1.getRate() << rp1.getName() << rp1.getInfo() << endl;
+//
+////    Player p = rp1; // 可行
+////    RatePlayer rp = p1; // 无法赋值
+//
+//    Player *p3 = new RatePlayer(50, p1);
+//    Player &p4 = rp1;
+////    cout << p3->getName() << p3->getInfo() << endl;
+////    cout << p4.getName() << p4.getInfo() << endl;
+//    delete p3;
+
+    BaseBrass *b1 = new Brass("zs", 40051240, 521.6);
+    BaseBrass *b2 = new BrassPlus("ls", 40025458, 5100.67, 10000.0);
+    b1->deposit(100);
+    b1->withdraw(5000000);
+    b2->withdraw(50000000000);
+
+    delete b2;
+    delete b1;
 }
 
 int main(const int argc, const char *argv[]) {

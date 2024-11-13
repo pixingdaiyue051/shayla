@@ -3,7 +3,9 @@
 
 #include <iostream>
 
+using std::ios_base;
 using std::string;
+const double DEFAULT_RATE = 0.1125;
 
 class Player {
 private:
@@ -13,13 +15,15 @@ private:
 public:
     explicit Player(const string &firstName = "", const string &lastName = "", bool hasTable = false);
 
-    string getName() const { return _firstName + " " + _lastName; };
+    virtual ~Player();
 
-    bool hasTable() const { return _hasTable; };
+    string getName() const { return _firstName + _lastName; }
 
-    void resetTable(bool hasTable = false) { _hasTable = hasTable; };
+    bool hasTable() const { return _hasTable; }
 
-    string getInfo() const;
+    void resetTable(bool hasTable = false) { _hasTable = hasTable; }
+
+    virtual string getInfo() const;
 };
 
 class RatePlayer : public Player {
@@ -31,11 +35,83 @@ public:
 
     RatePlayer(unsigned int rate, const Player &player);
 
-    unsigned int getRate() const { return _rate; };
+    ~RatePlayer() override;
 
-    void resetRate(unsigned int rate = 0) { _rate = rate; };
+    unsigned int getRate() const { return _rate; }
 
-    string getInfo() const;
+    void resetRate(unsigned int rate = 0) { _rate = rate; }
+
+    string getInfo() const override;
+};
+
+class BaseBrass {
+private:
+    string _fullName; // 账号名
+    long _account; // 账户号
+    double _balance; // 余额
+protected:
+    struct Formatter {
+        ios_base::fmtflags flag;
+        std::streamsize size;
+    };
+
+    const string &getFullName() const { return _fullName; }
+
+    long getAccount() const { return _account; }
+
+    double getBalance() const { return _balance; }
+
+    Formatter getFormatter() const;
+
+    void resetFormatter(Formatter &f) const;
+
+public:
+    explicit BaseBrass(const string &fullName = "", long account = 0, double balance = 0.0);
+
+    virtual ~BaseBrass() = default;
+
+    void deposit(double balance) { _balance += balance; } // 存款
+    virtual void withdraw(double balance) = 0; // 取款
+    virtual void viewAccount() const = 0; // 查看账户详情
+};
+
+/**
+ * 普通账户
+ */
+class Brass : public BaseBrass {
+public:
+    explicit Brass(const string &fullName = "", long account = 0, double balance = 0.0) : BaseBrass(fullName, account,
+                                                                                                    balance) {}
+
+    ~Brass() override = default;
+
+    void withdraw(double balance) override; // 取款
+    void viewAccount() const override; // 查看账户详情
+};
+
+/**
+ * 会员
+ */
+class BrassPlus : public BaseBrass {
+private:
+    double _maxLoan;
+    double _rate;
+    double _owesBank;
+public:
+    explicit BrassPlus(const string &fullName = "", long account = 0, double balance = 0.0, double maxLoan = 0.0,
+                       double rate = DEFAULT_RATE, double owesBank = 0.0) : BaseBrass(fullName, account, balance),
+                                                                            _maxLoan(maxLoan), _rate(rate),
+                                                                            _owesBank(owesBank) {}
+
+    ~BrassPlus() override = default;
+
+    void withdraw(double balance) override; // 取款
+    void viewAccount() const override; // 查看账户详情
+    void resetMaxLoan(double maxLoan) { _maxLoan = maxLoan; }
+
+    void resetRate(double rate) { _rate = rate; }
+
+    void resetOwesBank(double owesBank) { _owesBank = owesBank; }
 };
 
 #endif
